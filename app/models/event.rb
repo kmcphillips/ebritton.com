@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
 
   before_validation :set_ends_at
 
-
+  
 
   protected
 

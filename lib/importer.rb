@@ -23,6 +23,7 @@ class Importer
         import_bio
         import_contact
         import_links
+        import_projects
       end
     rescue => e
       puts "*** ERROR: Transaction rolled back becasue of exception raised! ***"
@@ -106,6 +107,35 @@ class Importer
       link.save!
 
       puts "  Link ##{link.id} created"
+    end
+    puts "Done"
+    puts ""
+  end
+
+  def import_projects
+    puts "Importing projects..."
+
+    puts "TODO: Import project image"
+    puts "TODO: Import project media"
+
+    @db.query("SELECT id, create_date, title, description, type, date, image FROM project ORDER BY id ASC").each do |result|
+      case result["type"]
+      when "w"
+        model = Writing
+      when "p"
+        model = Project
+      else
+        raise "Unknown project type #{result["type"]}"
+      end
+
+      project = model.new :title => result["title"], :body => result["description"], :happened_at => result["date"]
+      project.created_at = result["create_date"]
+      project.updated_at = result["create_date"]
+      project.id = result["id"]
+
+      project.save!
+
+      puts "  Project ##{project.id} (#{project.class.to_s.downcase}) created"
     end
     puts "Done"
     puts ""

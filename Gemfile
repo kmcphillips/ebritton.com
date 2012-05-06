@@ -37,7 +37,7 @@ gem 'capistrano'
 gem 'haml'
 gem 'haml-rails'
 gem 'rmagick'
-gem 'activeadmin'
+#gem 'activeadmin'
 gem 'kaminari'
 gem 'acts_as_permalink'
 gem 'rdiscount' # Markdown
