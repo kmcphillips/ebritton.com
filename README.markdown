@@ -1,6 +1,6 @@
-= ebritton.com
+# ebritton.com
 
-== Purpose
+## Purpose
 
 This Rails 3 project will replace the existing legacy http://ebritton.com
 
@@ -9,6 +9,6 @@ I will be using this site to dive into the Carrier Wave attachment gem, rather t
 It is still under active development.
 
 
-== Credits
+## Credits
 
 (Kevin McPhillips)[mailto:github@kevinmcphillips.ca]
