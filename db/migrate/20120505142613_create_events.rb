@@ -1,8 +1,8 @@
 class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
-      t.string :title
-      t.string :permalink
+      t.string :title, :null => false
+      t.string :permalink, :null => false, :limit => 61
       t.text :body
       t.datetime :starts_at
       t.datetime :ends_at

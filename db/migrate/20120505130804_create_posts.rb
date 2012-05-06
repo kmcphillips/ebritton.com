@@ -1,9 +1,9 @@
 class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
-      t.string :title
+      t.string :title, :null => false
       t.text :body
-      t.string :permalink
+      t.string :permalink, :null => false, :limit => 61
       t.boolean :imported, :default => false
 
       t.timestamps
