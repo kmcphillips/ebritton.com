@@ -1,16 +1,18 @@
 class Event < ActiveRecord::Base
+  attr_accessible :title, :body, :starts_at, :days, :image
+
   acts_as_permalink
+
+  mount_uploader :image, ImageUploader
 
   validates :title, :presence => true
   validates :body, :presence => true
   validates :days, :numericality => {:greater_than => 0, :allow_nil => false}
   validates :starts_at, :presence => true
 
-  attr_accessible :title, :body, :starts_at, :days
-
   before_validation :set_ends_at
 
-  
+
 
   protected
 

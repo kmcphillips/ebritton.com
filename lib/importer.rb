@@ -19,6 +19,9 @@ class Importer
       ActiveRecord::Base.transaction do
         clear_tables
         import_posts
+        import_events
+        import_bio
+        import_contact
       end
     rescue => e
       puts "*** ERROR: Transaction rolled back becasue of exception raised! ***"
@@ -30,7 +33,7 @@ class Importer
 
   def clear_tables
     puts "Truncating tables"
-    ["posts"].each do |table|
+    ["posts", "events"].each do |table|
       ActiveRecord::Base.connection.execute("TRUNCATE TABLE `#{table}`")
     end
   end
@@ -48,7 +51,51 @@ class Importer
       puts "  News post ##{post.id} created"
     end
     puts "Done"
+    puts ""
   end
 
-  
+  def import_events
+    puts "Importing events..."
+    @db.query("SELECT e.id, e.date, e.duration, e.title, e.description, e.image, e.create_date, i.type FROM event AS e LEFT JOIN image AS i ON e.image = i.id ORDER BY e.id ASC").each do |result|
+      event = Event.new(:title => result["title"], :body => result["description"], :starts_at => result["date"], :days => result["duration"])
+      event.created_at = result["create_date"]
+      event.updated_at = result["create_date"]
+      event.id = result["id"]
+      event.imported_image = "#{result["image"]}.#{result["type"]}" if result["image"].to_i > 0
+      event.imported = true
+
+      event.save!
+      puts "  Event ##{event.id} created"
+    end
+    puts "Done"
+    puts ""
+  end
+
+  def import_bio
+    puts "Importing bio..."
+    result = @db.query("SELECT body, image FROM bio LIMIT 1").first
+
+    body = result["body"].gsub(/<.?p>/, "").gsub(/<.?sup>/, "").gsub("&nbsp;", " ").gsub("&ndash;", "-").gsub("&rsquo;", "'").gsub(/^\s*/, "")
+
+    puts "TODO: Import bio image"
+
+    block = Block.bio
+    block.update_attributes!(:body => body)
+
+    puts "Done"
+    puts ""
+  end
+
+  def import_contact
+    puts "Importing contact..."
+    result = @db.query("SELECT body FROM contact LIMIT 1").first
+
+    body = result["body"].gsub(/<.?p>/, "").gsub("\r\n \r\n", "\n")
+
+    Block.contact.update_attributes!(:body => body)
+    
+    puts "Done"
+    puts ""
+  end
+
 end

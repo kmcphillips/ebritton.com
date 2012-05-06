@@ -8,6 +8,8 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :ends_at
       t.integer :days
       t.boolean :imported, :default => false
+      t.string :imported_image
+      t.string :image
 
       t.timestamps
     end
@@ -15,5 +17,6 @@ class CreateEvents < ActiveRecord::Migration
     add_index :events, :permalink
     add_index :events, :created_at
     add_index :events, :starts_at
+    add_index :events, :image
   end
 end

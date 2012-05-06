@@ -11,4 +11,4 @@ It is still under active development.
 
 ## Credits
 
-(Kevin McPhillips)[mailto:github@kevinmcphillips.ca]
+Kevin McPhillips  -  github@kevinmcphillips.ca
