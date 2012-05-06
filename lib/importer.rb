@@ -22,6 +22,7 @@ class Importer
         import_events
         import_bio
         import_contact
+        import_links
       end
     rescue => e
       puts "*** ERROR: Transaction rolled back becasue of exception raised! ***"
@@ -33,7 +34,7 @@ class Importer
 
   def clear_tables
     puts "Truncating tables"
-    ["posts", "events"].each do |table|
+    ["posts", "events", "links"].each do |table|
       ActiveRecord::Base.connection.execute("TRUNCATE TABLE `#{table}`")
     end
   end
@@ -94,6 +95,18 @@ class Importer
 
     Block.contact.update_attributes!(:body => body)
     
+    puts "Done"
+    puts ""
+  end
+
+  def import_links
+    puts "Importing links..."
+    @db.query("SELECT url, name, description FROM link ORDER BY id ASC").each do |result|
+      link = Link.new :url => result["url"], :title => result["name"], :description => result["description"]
+      link.save!
+
+      puts "  Link ##{link.id} created"
+    end
     puts "Done"
     puts ""
   end
