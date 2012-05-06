@@ -42,6 +42,7 @@ class Importer
       post.created_at = result["create_date"]
       post.updated_at = result["create_date"]
       post.id = result["id"]
+      post.imported = true
 
       post.save!
       puts "  News post ##{post.id} created"

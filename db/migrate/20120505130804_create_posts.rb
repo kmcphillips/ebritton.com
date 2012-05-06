@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.string :permalink
+      t.boolean :imported, :default => false
 
       t.timestamps
     end

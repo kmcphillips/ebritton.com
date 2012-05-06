@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :starts_at
       t.datetime :ends_at
       t.integer :days
+      t.boolean :imported, :default => false
 
       t.timestamps
     end

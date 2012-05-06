@@ -20,6 +20,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'spork'
   gem 'guard-spork'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
 
   if RUBY_PLATFORM.include? "darwin"
     gem 'growl'
@@ -39,3 +41,4 @@ gem 'paperclip'
 gem 'activeadmin'
 gem 'will_paginate'
 gem 'acts_as_permalink'
+gem 'rdiscount' # Markdown
