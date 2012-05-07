@@ -33,9 +33,30 @@ class Importer
 
   protected
 
+  # I am not trying to be generic here. This will only ever be used once. Don't worry about it. I know this is not good code.
+  def import_path
+    if Rails.env.development?
+      if RUBY_PLATFORM.include? "darwin"
+        raise "Unknown mac path"
+      elsif RUBY_PLATFORM.include? "linux" 
+        "/home/kevin/source/ebritton.com/tmp" 
+      else
+        raise "no idea where we are"
+      end
+    elsif Rails.env.production?
+      raise "Unknown production path"
+    else
+      raise "Unknown environment for import path"
+    end
+  end
+
+  def image_path(id, type="jpg")
+    "#{import_path}/images/p#{id}.#{type}"
+  end
+
   def clear_tables
     puts "Truncating tables"
-    ["posts", "events", "links"].each do |table|
+    ["posts", "events", "links", "projects"].each do |table|
       ActiveRecord::Base.connection.execute("TRUNCATE TABLE `#{table}`")
     end
   end
@@ -75,14 +96,14 @@ class Importer
 
   def import_bio
     puts "Importing bio..."
-    result = @db.query("SELECT body, image FROM bio LIMIT 1").first
+    result = @db.query("SELECT b.body, b.image, i.type FROM bio AS b LEFT JOIN image AS i ON b.image = i.id LIMIT 1").first
 
     body = result["body"].gsub(/<.?p>/, "").gsub(/<.?sup>/, "").gsub("&nbsp;", " ").gsub("&ndash;", "-").gsub("&rsquo;", "'").gsub(/^\s*/, "")
 
-    puts "TODO: Import bio image"
-
     block = Block.bio
-    block.update_attributes!(:body => body)
+    block.body = body
+    block.image = File.open(image_path(result["image"], result["type"]))
+    block.save!
 
     puts "Done"
     puts ""
