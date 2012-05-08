@@ -1,7 +1,7 @@
 class BlogController < ApplicationController
 
   def index
-    @posts = Post.sorted
+    @posts = Post.sorted.page(params[:page])
   end
 
   def show

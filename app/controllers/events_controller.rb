@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 
   def index
     @upcoming = Event.upcoming
-    @past = Event.past    
+    @past = Event.past.page(params[:page])
   end
 
   def show
