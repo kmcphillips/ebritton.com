@@ -8,9 +8,11 @@ EbrittonCom::Application.routes.draw do
     end
   end
 
-  [:bio, :contact, :p].each do |block|
+  [:bio, :contact].each do |block|
     match block.to_s => "blocks##{block}"
   end  
+
+  match "p" => "blocks#secret"
 
   resources :links, :only => [:index]
   resources :projects, :only => [:index]
@@ -25,7 +27,8 @@ EbrittonCom::Application.routes.draw do
   # Catch all remaining PHP pages and send them somewhere
   match ":page.php" => "legacy#default"
 
-    
+  # Legacy file locations
+  match "/media/:filename" => "legacy#media"
 
 end
 

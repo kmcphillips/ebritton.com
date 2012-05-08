@@ -38,6 +38,11 @@ class LegacyController < ApplicationController
     redirect_to contact_path
   end
 
+  # Files have moved, but this will stream them to the legacy paths for the most part.
+  def media
+    send_data Media.find_by_file!([params[:filename], params[:format]].reject(&:blank?).join(".")).file.read
+  end
+
   def default
     redirect_to root_path
   end
