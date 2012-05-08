@@ -18,11 +18,13 @@ class Importer
     begin
       ActiveRecord::Base.transaction do
         clear_tables
+
         import_posts
         import_events
         import_bio
         import_contact
         import_links
+        import_media
         import_projects
       end
     rescue => e
@@ -36,13 +38,7 @@ class Importer
   # I am not trying to be generic here. This will only ever be used once. Don't worry about it. I know this is not good code.
   def import_path
     if Rails.env.development?
-      if RUBY_PLATFORM.include? "darwin"
-        raise "Unknown mac path"
-      elsif RUBY_PLATFORM.include? "linux" 
-        "/home/kevin/source/ebritton.com/tmp" 
-      else
-        raise "no idea where we are"
-      end
+      "#{Rails.root}/tmp"
     elsif Rails.env.production?
       raise "Unknown production path"
     else
@@ -56,7 +52,7 @@ class Importer
 
   def clear_tables
     puts "Truncating tables"
-    ["posts", "events", "links", "projects"].each do |table|
+    ["posts", "events", "links", "projects", "media"].each do |table|
       ActiveRecord::Base.connection.execute("TRUNCATE TABLE `#{table}`")
     end
   end
@@ -84,8 +80,8 @@ class Importer
       event.created_at = result["create_date"]
       event.updated_at = result["create_date"]
       event.id = result["id"]
-      event.imported_image = "#{result["image"]}.#{result["type"]}" if result["image"].to_i > 0
       event.imported = true
+      event.image = File.open(image_path(result["image"], result["type"])) if result["image"]
 
       event.save!
       puts "  Event ##{event.id} created"
@@ -133,14 +129,27 @@ class Importer
     puts ""
   end
 
+  def import_media
+    puts "Importing media..."
+    @db.query("SELECT id, create_date, name, description, filename, secret, playlist FROM media ORDER BY id ASC").each do |result|
+      media = Media.new :name => result["name"], :description => result["description"], :secret => result["secret"] == "Y", :playlist => result["playlist"] == "Y"
+      media.id = result["id"]
+      media.created_at = result["create_date"]
+      media.updated_at = result["create_date"]
+      media.file = File.open("#{import_path}/media/#{result["filename"]}")
+
+      media.save!
+      puts "  Media ##{media.id} created (#{result["filename"]})"
+    end
+    puts "Done"
+    puts ""
+  end
+
   def import_projects
     puts "Importing projects..."
 
-    puts "TODO: Import project image"
-    puts "TODO: Import project media"
-
-    @db.query("SELECT id, create_date, title, description, type, date, image FROM project ORDER BY id ASC").each do |result|
-      case result["type"]
+    @db.query("SELECT p.id, p.create_date, p.title, p.description, p.type AS project_type, p.date, p.image, i.type, pm.media_id FROM project AS p LEFT JOIN project_media AS pm ON pm.project_id = p.id LEFT JOIN image AS i ON i.id = p.image ORDER BY p.id ASC").each do |result|
+      case result["project_type"]
       when "w"
         model = Writing
       when "p"
@@ -153,6 +162,9 @@ class Importer
       project.created_at = result["create_date"]
       project.updated_at = result["create_date"]
       project.id = result["id"]
+      project.media_id = result["media_id"]
+      project.imported = true
+      project.image = File.open(image_path(result["image"], result["type"])) if result["image"]
 
       project.save!
 

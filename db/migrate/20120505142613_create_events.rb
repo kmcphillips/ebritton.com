@@ -8,7 +8,6 @@ class CreateEvents < ActiveRecord::Migration
       t.datetime :ends_at
       t.integer :days
       t.boolean :imported, :default => false
-      t.string :imported_image
       t.string :image
 
       t.timestamps
