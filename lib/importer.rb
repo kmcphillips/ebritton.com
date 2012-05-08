@@ -153,7 +153,7 @@ class Importer
       when "w"
         model = Writing
       when "p"
-        model = Project
+        model = Work
       else
         raise "Unknown project type #{result["type"]}"
       end

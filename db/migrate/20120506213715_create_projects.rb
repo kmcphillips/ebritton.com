@@ -3,6 +3,7 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.string :type
       t.string :title, :null => false
+      t.string :permalink, :null => false, :limit => 61
       t.text :body
       t.datetime :happened_at
       t.boolean :imported, :default => false

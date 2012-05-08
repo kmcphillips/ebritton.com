@@ -12,5 +12,13 @@ class BlogController < ApplicationController
     @posts = Post.sorted
   end
 
+  def rss
+    respond_to do |wants|
+      wants.xml do
+        
+      end
+    end
+  end
+
 end
 

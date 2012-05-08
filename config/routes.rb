@@ -8,6 +8,8 @@ EbrittonCom::Application.routes.draw do
     end
   end
 
+  match "rss.:format" => "blog#rss"
+
   [:bio, :contact].each do |block|
     match block.to_s => "blocks##{block}"
   end  
