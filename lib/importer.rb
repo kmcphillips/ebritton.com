@@ -24,8 +24,8 @@ class Importer
         import_bio
         import_contact
         import_links
-        import_media
         import_projects
+        import_media
       end
     rescue => e
       puts "*** ERROR: Transaction rolled back becasue of exception raised! ***"
@@ -131,7 +131,7 @@ class Importer
 
   def import_media
     puts "Importing media..."
-    @db.query("SELECT id, create_date, name, description, filename, secret, playlist FROM media ORDER BY id ASC").each do |result|
+    @db.query("SELECT m.id, m.create_date, m.name, m.description, m.filename, m.secret, m.playlist FROM media AS m WHERE m.id NOT IN (SELECT media_id FROM project_media) ORDER BY id ASC").each do |result|
       media = Media.new :name => result["name"], :description => result["description"], :secret => result["secret"] == "Y", :playlist => result["playlist"] == "Y"
       media.id = result["id"]
       media.created_at = result["create_date"]
@@ -148,7 +148,7 @@ class Importer
   def import_projects
     puts "Importing projects..."
 
-    @db.query("SELECT p.id, p.create_date, p.title, p.description, p.type AS project_type, p.date, p.image, i.type, pm.media_id FROM project AS p LEFT JOIN project_media AS pm ON pm.project_id = p.id LEFT JOIN image AS i ON i.id = p.image ORDER BY p.id ASC").each do |result|
+    @db.query("SELECT p.id, p.create_date, p.title, p.description, p.type AS project_type, p.date, p.image, i.type, m.name, m.filename FROM project AS p LEFT JOIN project_media AS pm ON pm.project_id = p.id LEFT JOIN media AS m ON m.id = pm.media_id LEFT JOIN image AS i ON i.id = p.image ORDER BY p.id ASC").each do |result|
       case result["project_type"]
       when "w"
         model = Writing
@@ -162,10 +162,11 @@ class Importer
       project.created_at = result["create_date"]
       project.updated_at = result["create_date"]
       project.id = result["id"]
-      project.media_id = result["media_id"]
+      project.file_title = result["name"]
       project.imported = true
       project.image = File.open(image_path(result["image"], result["type"])) if result["image"]
-
+      project.file = File.open("#{import_path}/media/#{result["filename"]}") if result["filename"]
+binding.pry
       project.save!
 
       puts "  Project ##{project.id} (#{project.class.to_s.downcase}) created"

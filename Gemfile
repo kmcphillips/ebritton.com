@@ -39,6 +39,6 @@ gem 'haml-rails'
 gem 'rmagick'
 #gem 'activeadmin'
 gem 'kaminari'
-gem 'acts_as_permalink'
+gem 'acts_as_permalink', '0.3.2'
 gem 'rdiscount' # Markdown
 gem 'carrierwave'

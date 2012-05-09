@@ -4,9 +4,8 @@ class Project < ActiveRecord::Base
   acts_as_permalink
 
   mount_uploader :image, ImageUploader
+  mount_uploader :file, FileUploader
   
-  belongs_to :media
-
   scope :sorted, order("created_at DESC")
 
 

@@ -8,7 +8,8 @@ class CreateProjects < ActiveRecord::Migration
       t.datetime :happened_at
       t.boolean :imported, :default => false
       t.string :image
-      t.integer :media_id
+      t.string :file
+      t.string :file_title
 
       t.timestamps
     end
@@ -17,6 +18,6 @@ class CreateProjects < ActiveRecord::Migration
     add_index :projects, :imported
     add_index :projects, :created_at
     add_index :projects, :image
-    add_index :projects, :media_id
+    add_index :projects, :file
   end
 end
