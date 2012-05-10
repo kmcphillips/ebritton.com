@@ -1,9 +1,25 @@
 !!!
 %html
   %head
+    %title= ["Eliot Britton", @title].flatten.join(" - ")
+
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     
     = render :partial => "shared/meta"
 
-= yield
+  %body
+    #header
+      %h1 Eliot Britton
+      %h2 Composer. Teacher. Sound Artist#{link_to ".", "/p/", :rel => "nofollow"}
+
+    #menu= render :partial => "shared/nav"
+
+    #content
+      #col_left= yield :sidebar
+      #col_right= yield
+      .clear
+
+      #footer
+        %p
+          <a href="/rss.xml">RSS</a>&nbsp;&nbsp;<img src="images/template/rss.gif" alt="RSS" />&nbsp;&nbsp; | &nbsp;&copy; 2007 <script type="text/javascript">var eml = 'ryvbg@roevggba.pbz'; document.write('<a href="mailto:' + eml.rot13() + '">Eliot Britton</a>');</script><noscript><a href="mailto:eliot@[REMOVE_THIS]ebritt[REMOVE_THIS]on.com">Eliot Britton</a></noscript>&nbsp;&nbsp; | &nbsp;&nbsp;Site by <script type="text/javascript">var eml = 'xriva@gragbbznal.pbz'; document.write('<a href="mailto:' + eml.rot13() + '">Kevin McPhillips</a>');</script><noscript><a href="mailto:kevin@[REMOVE_THIS]tentoo[REMOVE_THIS]many.com">Kevin McPhillips</a></noscript>

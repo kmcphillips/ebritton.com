@@ -109,7 +109,7 @@ class Importer
     puts "Importing contact..."
     result = @db.query("SELECT body FROM contact LIMIT 1").first
 
-    body = result["body"].gsub(/<.?p>/, "").gsub("\r\n \r\n", "\n")
+    body = result["body"].gsub(/<.?p>/, "").gsub("\r\n \r\n", "\n\n")
 
     Block.contact.update_attributes!(:body => body)
     
@@ -166,7 +166,7 @@ class Importer
       project.imported = true
       project.image = File.open(image_path(result["image"], result["type"])) if result["image"]
       project.file = File.open("#{import_path}/media/#{result["filename"]}") if result["filename"]
-binding.pry
+
       project.save!
 
       puts "  Project ##{project.id} (#{project.class.to_s.downcase}) created"

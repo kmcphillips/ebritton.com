@@ -24,5 +24,14 @@ describe ApplicationHelper do
       result.should be_html_safe
     end
   end
-  
+
+  describe "#nav_active" do
+    it "should return the @nav variable first if it is set" do
+
+    end
+
+    it "should return the controller name if no override is set" do
+
+    end
+  end  
 end

@@ -9,7 +9,7 @@
 body {
   margin: 20px;
   padding: 0;
-  background: #292818 url(images/template/bg_tile.gif);
+  background: #292818 url(/images/template/bg_tile.gif);
   font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
   font-size: 11px;
   color: #292818;
@@ -72,7 +72,7 @@ a:hover {
   width: 592px;
   height: 112px;
   margin: 0 auto;
-  background: #ded7bd url(images/template/header.png);
+  background: #ded7bd url(/images/template/header.png);
   border: 4px solid #000000;
 }
 
@@ -124,7 +124,7 @@ a:hover {
   width: 100px;
   height: 26px;
   padding: 4px 0 0 0;
-  background: url(images/template/navbutton_off.gif);
+  background: url(/images/template/navbutton_off.gif);
   background-color: #786E50;
   text-decoration: none;
   text-align: center;
@@ -133,7 +133,7 @@ a:hover {
 }
 
 #menu a:hover, #menu .active a {
-  background: url(images/template/navbutton_on.gif);
+  background: url(/images/template/navbutton_on.gif);
   background-color: #000000;
   color: #FFFFFF;
 }
@@ -143,7 +143,7 @@ a:hover {
 #content {
   width: 592px;
   margin: 0 auto;
-  background: #786E50 url(images/template/bg_col_left.gif) repeat-y;
+  background: #786E50 url(/images/template/bg_col_left.gif) repeat-y;
   border: 4px solid #000000;
 }
 

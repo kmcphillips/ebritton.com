@@ -1,0 +1,7 @@
+%ul
+  %li{:class => (nav_active == :blog ? "active" : "")}= link_to "Blog", root_path
+  %li{:class => (nav_active == :events ? "active" : "")}= link_to "Events", events_path
+  %li{:class => (nav_active == :projects ? "active" : "")}= link_to "Works", projects_path
+  %li{:class => (nav_active == :bio ? "active" : "")}= link_to "Bio", bio_path
+  %li{:class => (nav_active == :links ? "active" : "")}= link_to "Links", links_path
+  %li{:class => (nav_active == :contact ? "active" : "")}= link_to "Contact", contact_path
