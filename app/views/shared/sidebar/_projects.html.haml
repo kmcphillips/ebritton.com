@@ -2,11 +2,11 @@
   %h3 Works
   %ul
     - @sidebar_works.each do |work|
-      %li= link_to work.title, project_path(work)
+      %li= link_to work.title, projects_path(:anchor => work.permalink)
 
 %div
   %h3 Writings
   %ul
     - @sidebar_writings.each do |writing|
-      %li= link_to writing.title, project_path(writing)
+      %li= link_to writing.title, projects_path(:anchor => writing.permalink)
 

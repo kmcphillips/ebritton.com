@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
 
   def index
-    @works = Works.sorted
-    @writings = Writings.sorted
+    @works = Work.sorted
+    @writings = Writing.sorted
   end
 
   def show
