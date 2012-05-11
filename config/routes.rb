@@ -17,7 +17,7 @@ EbrittonCom::Application.routes.draw do
   match "p" => "blocks#secret"
 
   resources :links, :only => [:index]
-  resources :projects, :only => [:index]
+  resources :projects, :only => [:index, :show]
   resources :events, :only => [:index, :show]
 
 

@@ -212,6 +212,11 @@ a:hover {
   color: #786E50;
 }
 
+#footer p a img {
+  border: none;
+  float: none;
+}
+
 /* Misc */
 
 .center {

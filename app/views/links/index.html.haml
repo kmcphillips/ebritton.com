@@ -1,0 +1,11 @@
+- content_for :sidebar do
+  = render :partial => "shared/sidebar/bio"
+
+%h2 Links
+
+- @links.each do |link|
+  %p
+    %span.bold= link_to link.title, link.url
+    %br
+    = link.description
+

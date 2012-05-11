@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title= ["Eliot Britton", @title].flatten.join(" - ")
+    %title= generated_title
 
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
@@ -22,4 +22,10 @@
 
       #footer
         %p
-          <a href="/rss.xml">RSS</a>&nbsp;&nbsp;<img src="images/template/rss.gif" alt="RSS" />&nbsp;&nbsp; | &nbsp;&copy; 2007 <script type="text/javascript">var eml = 'ryvbg@roevggba.pbz'; document.write('<a href="mailto:' + eml.rot13() + '">Eliot Britton</a>');</script><noscript><a href="mailto:eliot@[REMOVE_THIS]ebritt[REMOVE_THIS]on.com">Eliot Britton</a></noscript>&nbsp;&nbsp; | &nbsp;&nbsp;Site by <script type="text/javascript">var eml = 'xriva@gragbbznal.pbz'; document.write('<a href="mailto:' + eml.rot13() + '">Kevin McPhillips</a>');</script><noscript><a href="mailto:kevin@[REMOVE_THIS]tentoo[REMOVE_THIS]many.com">Kevin McPhillips</a></noscript>
+          = link_to "RSS", "/rss.xml"
+          &nbsp;&nbsp;
+          = link_to image_tag("/images/template/rss.gif", :alt => "RSS"), "/rss.xml"
+          | &nbsp;&copy; 2007-2012
+          = obfuscated_mail_to "eliot@ebritton.com", "Eliot Britton"
+          &nbsp;&nbsp; | &nbsp;&nbsp;
+          = link_to "Site Source", "http://github.com/kimos/ebritton.com"

@@ -94,7 +94,7 @@ class Importer
     puts "Importing bio..."
     result = @db.query("SELECT b.body, b.image, i.type FROM bio AS b LEFT JOIN image AS i ON b.image = i.id LIMIT 1").first
 
-    body = result["body"].gsub(/<.?p>/, "").gsub(/<.?sup>/, "").gsub("&nbsp;", " ").gsub("&ndash;", "-").gsub("&rsquo;", "'").gsub(/^\s*/, "")
+    body = result["body"].gsub(/<.?p>/, "").gsub(/<.?sup>/, "").gsub("&nbsp;", " ").gsub("&ndash;", "-").gsub("&rsquo;", "'")
 
     block = Block.bio
     block.body = body
