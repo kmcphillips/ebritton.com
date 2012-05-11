@@ -3,6 +3,7 @@ class BlocksController < ApplicationController
   layout :select_layout
 
   def bio
+    load_sidebar :projects
     @title = "Bio"
     @nav = :bio
     @bio = Block.bio

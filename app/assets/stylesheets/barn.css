@@ -227,6 +227,10 @@ a:hover {
   font-weight: bold;
 }
 
+.italic {
+  font-style: italic;
+}
+
 /* Blog specific */
 
 div.footnavLeft, div.footnavCenter, div.footnavRight {

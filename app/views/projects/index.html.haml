@@ -1,0 +1,13 @@
+- content_for :sidebar do
+  = render :partial => "shared/sidebar/projects"
+
+%h2 Works
+- @works.each do |work|
+  = render :partial => "project", :object => work
+
+%br
+%br
+
+%h2 Writings
+- @writings.each do |writing|
+  = render :partial => "project", :object => writing
