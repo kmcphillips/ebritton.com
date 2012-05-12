@@ -25,4 +25,10 @@ module ApplicationHelper
     ["Eliot Britton", @title].flatten.join(" - ")
   end
 
+  def sidebar(section)
+    content_for :sidebar do
+      render :partial => "shared/sidebar/#{section}"
+    end
+    nil
+  end
 end

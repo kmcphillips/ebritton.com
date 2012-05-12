@@ -17,6 +17,7 @@ body {
 
 body.secret {
   background-color: #ded7bd;
+  background-image: none;
 }
 
 h1, h2, h3 {

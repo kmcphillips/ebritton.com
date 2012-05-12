@@ -12,8 +12,8 @@ class Event < ActiveRecord::Base
 
   before_validation :set_ends_at
 
-  scope :upcoming, lambda{  }
-  scope :past, lambda{  }  
+  scope :upcoming, lambda{ where("ends_at > ?", Time.now) }
+  scope :past, lambda{ where("ends_at < ?", Time.now) }  
 
   protected
 

@@ -11,8 +11,9 @@ class BlogController < ApplicationController
   end
 
   def archive
+    load_sidebar :projects
     @title = "Blog Archive"
-    @posts = Post.sorted
+    @posts = Post.sorted.group_by{|p| p.created_at.year }
   end
 
   def rss
