@@ -1,0 +1,6 @@
+- content_for :sidebar do
+  %div
+    %ul
+      %li= link_to "Back to all events", events_path
+
+= render :partial => "event", :object => @event

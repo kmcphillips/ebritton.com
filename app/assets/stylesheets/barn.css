@@ -67,6 +67,12 @@ a:hover {
   font-size: 9px;
 }
 
+nav.pagination {
+  text-align: center;
+  background: #645B43;
+  padding: 4px;
+}
+
 /* Header */
 
 #header {

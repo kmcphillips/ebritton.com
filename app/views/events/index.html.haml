@@ -1,0 +1,13 @@
+- content_for :sidebar do
+  = render :partial => "shared/sidebar/projects"
+
+- if @upcoming.any?
+  %h2 Upcoming Events
+  - @upcoming.each do |event|
+    = render :partial => "event", :object => event
+
+%h2 Past Events
+- @past.each do |event|
+  = render :partial => "event", :object => event
+
+%p.byline= paginate @past
