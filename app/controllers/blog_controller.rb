@@ -16,10 +16,10 @@ class BlogController < ApplicationController
     @posts = Post.sorted.group_by{|p| p.created_at.year }
   end
 
-  def rss
+  def feed
     respond_to do |wants|
-      wants.xml do
-        
+      wants.rss do
+        @items = (Post.all + Event.all).sort{|x, y| y.sort_by <=> x.sort_by }
       end
     end
   end

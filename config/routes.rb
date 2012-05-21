@@ -8,7 +8,8 @@ EbrittonCom::Application.routes.draw do
     end
   end
 
-  match "rss.:format" => "blog#rss"
+  match "feed.:format" => "blog#feed"
+  match "rss.xml" => "blog#feed", :format => "rss"
 
   [:bio, :contact].each do |block|
     match block.to_s => "blocks##{block}"

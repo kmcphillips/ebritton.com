@@ -15,6 +15,10 @@ class Event < ActiveRecord::Base
   scope :upcoming, lambda{ where("ends_at > ?", Time.now).order("starts_at DESC") }
   scope :past, lambda{ where("ends_at < ?", Time.now).order("starts_at DESC") }  
 
+  def sort_by
+    starts_at
+  end
+
   protected
 
   def set_ends_at

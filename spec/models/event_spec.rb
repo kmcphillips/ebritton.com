@@ -3,7 +3,12 @@ require 'spec_helper'
 describe Event do
   let(:event){ FactoryGirl.create(:event) }
 
-  
+  describe "#sort_by" do
+    it "should map to starts_at" do
+      event.should_receive(:starts_at).and_return("pie")    
+      event.sort_by.should == "pie"
+    end    
+  end  
 
   describe "protected method" do
     describe "#set_ends_at" do
