@@ -1,13 +1,15 @@
 class BlogController < ApplicationController
 
   def index
+    load_sidebar :projects
     @title = "Blog"
     @posts = Post.sorted.page(params[:page])
   end
 
   def show
+    load_sidebar :projects
     @post = Post.find_by_permalink!(params[:id])
-    @title = @post.title
+    @title = ["Blog", @post.title]
   end
 
   def archive

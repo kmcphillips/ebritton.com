@@ -1,0 +1,13 @@
+- content_for :sidebar do
+  = render :partial => "shared/sidebar/audio"
+  = render :partial => "shared/sidebar/projects"
+
+%h2 Blog
+
+- @posts.each do |post|
+  = render :partial => "post", :object => post
+
+%p.byline= paginate @posts
+
+.center
+  = link_to "Blog Archive", archive_blog_index_path

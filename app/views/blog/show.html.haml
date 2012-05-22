@@ -1,0 +1,8 @@
+- content_for :sidebar do
+  %div
+    %ul
+      %li= link_to "Back to Blog", root_path
+
+%h2 Blog
+
+= render :partial => "post", :object => @post

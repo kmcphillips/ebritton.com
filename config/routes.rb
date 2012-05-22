@@ -16,6 +16,7 @@ EbrittonCom::Application.routes.draw do
   end  
 
   match "p" => "blocks#secret"
+  match "playlist" => "blocks#playlist"
 
   resources :links, :only => [:index]
   resources :projects, :only => [:index, :show]

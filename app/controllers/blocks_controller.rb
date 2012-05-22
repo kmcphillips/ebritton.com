@@ -20,6 +20,14 @@ class BlocksController < ApplicationController
     @media = Media.secret.sorted
   end
 
+  def playlist
+    respond_to do |wants|
+      wants.xml do
+        @tracks = Media.playlist.sorted
+      end
+    end
+  end
+
   private
 
   def select_layout
