@@ -5,7 +5,6 @@ gem 'rails', '3.2.3'
 gem 'mysql2'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer', :platform => :ruby
   gem 'uglifier', '>= 1.0.3'
@@ -13,6 +12,7 @@ end
 
 group :development, :test do
   gem 'pry'
+  gem 'pry-rails'
   gem 'awesome_print'
   gem 'rspec'
   gem 'rspec-rails'
@@ -37,7 +37,12 @@ gem 'capistrano'
 gem 'haml'
 gem 'haml-rails'
 gem 'rmagick'
-#gem 'activeadmin'
+
+# Active Admin back end
+gem 'activeadmin'
+gem 'sass-rails'
+gem 'meta_search', '>= 1.1.0.pre'
+
 gem 'kaminari'
 gem 'acts_as_permalink', '0.3.2'
 gem 'rdiscount' # Markdown
