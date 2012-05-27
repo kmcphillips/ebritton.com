@@ -60,7 +60,8 @@ class Importer
   def import_posts
     puts "Importing posts..."
     @db.query("SELECT id, create_date, title, post FROM blog ORDER BY id ASC").each do |result|
-      post = Post.new(:title => result["title"], :body => result["post"])
+      post = Post.new(:title => result["title"])
+      post.body = result["post"].gsub("href=\"images/p", "href=\"/images/p").gsub("src=\"images/thumbs/t", "src=\"/images/thumbs/t")
       post.created_at = result["create_date"]
       post.updated_at = result["create_date"]
       post.id = result["id"]
@@ -77,6 +78,7 @@ class Importer
     puts "Importing events..."
     @db.query("SELECT e.id, e.date, e.duration, e.title, e.description, e.image, e.create_date, i.type FROM event AS e LEFT JOIN image AS i ON e.image = i.id ORDER BY e.id ASC").each do |result|
       event = Event.new(:title => result["title"], :body => result["description"], :starts_at => result["date"], :days => result["duration"])
+      event.body = result["description"].gsub("href=\"images/p", "href=\"/images/p").gsub("src=\"images/thumbs/t", "src=\"/images/thumbs/t")
       event.created_at = result["create_date"]
       event.updated_at = result["create_date"]
       event.id = result["id"]
