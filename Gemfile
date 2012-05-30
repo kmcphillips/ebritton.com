@@ -22,6 +22,7 @@ group :development, :test do
   gem 'guard-spork'
   gem 'factory_girl'
   gem 'factory_girl_rails'
+  gem 'quiet_assets'
 
   if RUBY_PLATFORM.include? "darwin"
     gem 'growl'

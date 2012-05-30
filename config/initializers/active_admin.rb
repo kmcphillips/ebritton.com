@@ -129,4 +129,7 @@ ActiveAdmin.setup do |config|
 
   config.register_javascript 'admin/shiny_datetimepicker'
   config.register_javascript 'admin/preview'
+
+  config.register_stylesheet 'admin/admin.css'
+
 end

@@ -26,6 +26,8 @@ EbrittonCom::Application.routes.draw do
   resources :projects, :only => [:index, :show]
   resources :events, :only => [:index, :show]
 
+  match "admin/preview" => "preview#index"
+
 
   ## Legacy PHP URLs
   %w[blog events bio bloghistory works links contact].each do |page|

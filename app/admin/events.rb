@@ -46,7 +46,7 @@ ActiveAdmin.register Event do
     else
       f.inputs do
         f.input :title
-        f.input :body, :input_html => {:class => "body"}
+        f.input :body, :input_html => {:class => "body"}, :hint => markdown_message
         f.input :starts_at
         f.input :days, :hint => "Number of days the even lasts."
         f.input :image, :hint => "Appears at the top of the event."
