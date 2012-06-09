@@ -8,7 +8,7 @@ ActiveAdmin.register Event do
     defaults :finder => :find_by_permalink
   end
 
-  index :format => :blog do
+  index :format => :blog, :download_links => false  do
     column :title do |event|
       link_to event.title, admin_event_path(event)
     end
@@ -34,15 +34,14 @@ ActiveAdmin.register Event do
         end
       end
       row :body do
-        # This is the work around the fact that returning a string was not html_safe
-        render :partial => "admin/events/body", :object => event
+        render :partial => "admin/shared/body", :object => event
       end
     end
   end
 
   form do |f|
-    if f.object.imported? && false
-      imported_message
+    if f.object.imported?
+      content_tag :h3, imported_message
     else
       f.inputs do
         f.input :title

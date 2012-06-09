@@ -6,7 +6,7 @@ ActiveAdmin.register Link do
 
   actions :all, :except => :show
 
-  index do
+  index :download_links => false do
     column :title
     column :description
     column "URL", :sortable => :url do |link|
