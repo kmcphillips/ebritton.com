@@ -6,6 +6,8 @@ ActiveAdmin.register Block, :as => "Section" do
 
   config.comments = false
 
+  menu :priority => 3
+
   controller do
     defaults :finder => :find_by_label
   end

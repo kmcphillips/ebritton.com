@@ -2,7 +2,9 @@ ActiveAdmin.register Event do
   filter :title
   filter :starts_at
 
-  config.comments = false 
+  config.comments = false
+
+  menu :priority => 2
 
   controller do
     defaults :finder => :find_by_permalink

@@ -1,5 +1,8 @@
 ActiveAdmin.register PlaylistItem do
+
   config.clear_sidebar_sections!
+
+  menu :priority => 4
 
   index :download_links => false do
     column :name

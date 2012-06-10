@@ -4,6 +4,8 @@ ActiveAdmin.register Post do
 
   config.comments = false
 
+  menu :priority => 1
+
   controller do
     defaults :finder => :find_by_permalink
   end

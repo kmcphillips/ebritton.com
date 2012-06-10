@@ -1,8 +1,11 @@
 ActiveAdmin.register Link do
+  
   filter :title
   filter :url
 
   config.sort_order = "id DESC"
+
+  menu :priority => 8
 
   actions :all, :except => :show
 

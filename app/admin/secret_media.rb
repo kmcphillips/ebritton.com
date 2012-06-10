@@ -1,6 +1,9 @@
 ActiveAdmin.register SecretMedia do
+
   filter :name
   filter :description
+
+  menu :priority => 4
 
   index :download_links => false do
     column :name
