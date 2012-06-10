@@ -15,5 +15,14 @@ ActiveAdmin.register Link do
     default_actions
   end
 
-  
+  form do |f|
+    f.inputs do
+      f.input :url, :hint => "Must start with http:// or https://", :as => :url
+      f.input :title
+      f.input :description, :as => :text, :input_html => {:rows => 3}
+    end
+      
+    f.buttons
+  end
+
 end

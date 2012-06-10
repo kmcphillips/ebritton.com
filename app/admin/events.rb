@@ -8,7 +8,7 @@ ActiveAdmin.register Event do
     defaults :finder => :find_by_permalink
   end
 
-  index :format => :blog, :download_links => false  do
+  index :download_links => false  do
     column :title do |event|
       link_to event.title, admin_event_path(event)
     end

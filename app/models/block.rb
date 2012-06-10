@@ -5,7 +5,9 @@ class Block < ActiveRecord::Base
 
   validates :label, :presence => true
 
-
+  def to_param
+    self.label
+  end
 
   class << self
     [:bio, :contact].each do |label|
