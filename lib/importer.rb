@@ -134,14 +134,15 @@ class Importer
   def import_media
     puts "Importing media..."
     @db.query("SELECT m.id, m.create_date, m.name, m.description, m.filename, m.secret, m.playlist FROM media AS m WHERE m.id NOT IN (SELECT media_id FROM project_media) ORDER BY id ASC").each do |result|
-      media = Media.new :name => result["name"], :description => result["description"], :secret => result["secret"] == "Y", :playlist => result["playlist"] == "Y"
+      media = Media.new :name => result["name"], :description => result["description"]
       media.id = result["id"]
+      media.type = (result["playlist"] == "Y" ? "PlaylistItem" : "SecretMedia")
       media.created_at = result["create_date"]
       media.updated_at = result["create_date"]
       media.file = File.open("#{import_path}/media/#{result["filename"]}")
 
       media.save!
-      puts "  Media ##{media.id} created (#{result["filename"]})"
+      puts "  Media ##{media.id} of type #{media.type} created (#{result["filename"]})"
     end
     puts "Done"
     puts ""

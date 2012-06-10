@@ -1,0 +1,3 @@
+class PlaylistItem < Media
+
+end

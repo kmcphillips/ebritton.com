@@ -17,13 +17,13 @@ class BlocksController < ApplicationController
   end
 
   def secret
-    @media = Media.secret.sorted
+    @media = SecretMedia.sorted
   end
 
   def playlist
     respond_to do |wants|
       wants.xml do
-        @tracks = Media.playlist.sorted
+        @tracks = PlaylistItem.sorted
       end
     end
   end

@@ -1,0 +1,3 @@
+class SecretMedia < Media
+
+end
