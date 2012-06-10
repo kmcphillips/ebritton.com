@@ -3,7 +3,6 @@ ActiveAdmin.register PlaylistItem do
 
   index :download_links => false do
     column :name
-    column :description
     column "File" do |media|
       link_to media.file.file.filename, media.becomes(Media).file_url
     end
@@ -15,8 +14,7 @@ ActiveAdmin.register PlaylistItem do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :description
-      f.input :file
+      f.input :file, :hint => "Must be an mp3 file."
     end
 
     f.buttons
