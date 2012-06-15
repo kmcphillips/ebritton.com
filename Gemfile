@@ -23,14 +23,17 @@ group :development, :test do
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'quiet_assets'
-
-  if RUBY_PLATFORM.include? "darwin"
-    gem 'growl'
-  elsif RUBY_PLATFORM.include? "linux"
-    gem 'libnotify'
-  end
-
   gem 'thin'
+end
+
+group :darwin do
+  gem "rb-fsevent"
+  gem "growl_notify"
+end
+
+group :linux do
+  gem "rb-inotify"
+  gem "libnotify"
 end
 
 gem 'jquery-rails'
