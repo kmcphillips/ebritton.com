@@ -1,0 +1,8 @@
+- if object.any?
+  %table.index_table
+    - object.each do |post|
+      %tr{:class => cycle("odd", "even")}
+        %td= link_to post.title, blog_path(post)
+        %td= post.created_at.to_s(:words)
+- else
+  None

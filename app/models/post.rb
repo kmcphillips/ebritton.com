@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
 
   scope :sorted, order("created_at DESC")
   scope :created_on, lambda{|date| where("DATE(created_at) BETWEEN ? AND ?", date, date).sorted } 
+  scope :recent, sorted.limit(5)
 
   def sort_by
     created_at

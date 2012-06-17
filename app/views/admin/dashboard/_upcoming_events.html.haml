@@ -1,0 +1,8 @@
+- if object.any?
+  %table.index_table
+    - object.each do |event|
+      %tr{:class => cycle("odd", "even")}
+        %td= link_to event.title, event_path(event)
+        %td= event.starts_at.to_s(:words)
+- else
+  None

@@ -41,4 +41,22 @@ ActiveAdmin::Dashboards.build do
   # section "Membership Summary", :if => :memberships_enabled?
   # section "Membership Summary", :if => Proc.new { current_admin_user.account.memberships.any? }
 
+  section "Upcoming Events", :priority => 2 do
+    div do
+      render 'upcoming_events', :object => Event.upcoming
+    end
+  end
+
+  section "Recent Blog Posts", :priority => 1 do
+    div do
+      render 'recent_posts', :object => Post.recent
+    end
+  end
+
+  section "Probably a Boat", :priority => 3 do
+    div do
+      render 'boat'
+    end
+  end
+
 end
