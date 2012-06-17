@@ -1,5 +1,7 @@
 - if object.any?
   %table.index_table
+    - cycle("odd", "event")
+    - cycle("odd", "event") if current_cycle == "even"
     - object.each do |post|
       %tr{:class => cycle("odd", "even")}
         %td= link_to post.title, blog_path(post)

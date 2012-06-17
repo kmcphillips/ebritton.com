@@ -1,6 +1,6 @@
 :javascript
   $(document).ready(function(){
-    $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {tags: "boat", tagmode: "any", format: "json"}, function(data){
+    $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {tags: "sailboat", tagmode: "any", format: "json"}, function(data){
       item = data.items[Math.floor(Math.random() * data.items.length)];
       $("#boat").attr("src", item.media.m)
     });
