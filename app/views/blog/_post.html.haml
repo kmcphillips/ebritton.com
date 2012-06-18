@@ -5,7 +5,7 @@
   = link_to "Permalink", blog_path(post)
 
 %p
-  = link_to(image_tag(post.image.thumb.url, :alt => post.title), post.image.url) if post.image.present?
+  = link_to(image_tag(post.image.thumb.url, :alt => post.title), post.image.url, :title => post.title) if post.image.present?
   = body post
 
 .clear
