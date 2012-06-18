@@ -3,8 +3,8 @@ class ProjectsController < ApplicationController
   def index
     load_sidebar :projects
     @title = "Works"
-    @works = Work.sorted
-    @writings = Writing.sorted
+    @works = Project.other.sorted
+    @writings = Project.written.sorted
   end
 
   def show

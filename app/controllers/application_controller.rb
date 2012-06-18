@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   def load_sidebar(section)
     case section.to_sym
     when :projects
-      @sidebar_works = Work.sorted
-      @sidebar_writings = Writing.sorted
+      @sidebar_works = Project.other.sorted
+      @sidebar_writings = Project.written.sorted
     when :bio
       @sidebar_bio = Block.bio
     else
