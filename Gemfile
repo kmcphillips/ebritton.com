@@ -27,8 +27,7 @@ group :development, :test do
 end
 
 group :darwin do
-  gem "rb-fsevent"
-  gem "growl_notify"
+  gem "growl"
 end
 
 group :linux do

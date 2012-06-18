@@ -1,3 +1,0 @@
-class Writing < Project
-
-end

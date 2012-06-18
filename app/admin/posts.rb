@@ -27,15 +27,15 @@ ActiveAdmin.register Post do
         end
       end
       row :created_at
+      row :body do
+        render :partial => "admin/shared/body", :object => post
+      end
       row :image do
         if post.image.present?
           image_tag(post.image.url)
         else
           "None"
         end
-      end
-      row :body do
-        render :partial => "admin/shared/body", :object => post
       end
     end
   end

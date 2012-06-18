@@ -152,16 +152,9 @@ class Importer
     puts "Importing projects..."
 
     @db.query("SELECT p.id, p.create_date, p.title, p.description, p.type AS project_type, p.date, p.image, i.type, m.name, m.filename FROM project AS p LEFT JOIN project_media AS pm ON pm.project_id = p.id LEFT JOIN media AS m ON m.id = pm.media_id LEFT JOIN image AS i ON i.id = p.image ORDER BY p.id ASC").each do |result|
-      case result["project_type"]
-      when "w"
-        model = Writing
-      when "p"
-        model = Work
-      else
-        raise "Unknown project type #{result["type"]}"
-      end
 
-      project = model.new :title => result["title"], :body => result["description"], :happened_at => result["date"]
+      project = Project.new :title => result["title"], :body => result["description"], :happened_at => result["date"]
+      project.written = (result["project_type"] == "w")
       project.created_at = result["create_date"]
       project.updated_at = result["create_date"]
       project.id = result["id"]
@@ -172,7 +165,7 @@ class Importer
 
       project.save!
 
-      puts "  Project ##{project.id} (#{project.class.to_s.downcase}) created"
+      puts "  Project ##{project.id} (#{project.written? ? "written" : "regular"}) created"
     end
     puts "Done"
     puts ""

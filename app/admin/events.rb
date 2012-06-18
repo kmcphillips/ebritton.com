@@ -28,15 +28,15 @@ ActiveAdmin.register Event do
       end
       row :starts_at
       row :days
+      row :body do
+        render :partial => "admin/shared/body", :object => event
+      end
       row :image do
         if event.image.present?
           image_tag(event.image.url)
         else
           "None"
         end
-      end
-      row :body do
-        render :partial => "admin/shared/body", :object => event
       end
     end
   end
