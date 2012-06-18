@@ -53,10 +53,12 @@ ActiveAdmin::Dashboards.build do
     end
   end
 
-  section "Probably a Boat", :priority => 3 do
-    div do
-      render 'boat'
-    end
+  if Rails.env.production?
+    section "Probably a Boat", :priority => 3 do
+      div do
+        render 'boat'
+      end
+  end
   end
 
 end

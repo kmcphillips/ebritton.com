@@ -8,5 +8,6 @@
         %td= event.starts_at.to_s(:words)
 - else
   None
+  %br
 
 = button_to "New Event", new_admin_event_path, :method => :get

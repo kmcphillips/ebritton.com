@@ -8,5 +8,6 @@
         %td= post.created_at.to_s(:words)
 - else
   None
+  %br
 
 = button_to "New Blog Post", new_admin_post_path, :method => :get
