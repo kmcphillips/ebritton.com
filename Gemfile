@@ -37,6 +37,8 @@ end
 
 gem 'jquery-rails'
 gem 'capistrano'
+gem 'capistrano_colors'
+gem 'capistrano-ext'
 gem 'haml'
 gem 'haml-rails'
 gem 'rmagick'
