@@ -1,4 +1,4 @@
-ActiveAdmin.register Block, :as => "Section" do
+ActiveAdmin.register Block, :as => "Text" do
 
   config.clear_sidebar_sections!
 
