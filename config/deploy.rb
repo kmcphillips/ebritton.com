@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 set :application, "ebritton.com"
 set :repository,  "git://github.com/kimos/ebritton.com.git"
 set :deploy_to, "/var/www/kevin/data/www/ebritton.com"
@@ -21,7 +23,7 @@ namespace :deploy do
   end
 end
 
-after "deploy:update", "deploy:cleanup" 
+after "deploy:update", "deploy:cleanup"
 
 after "deploy", "symlink_shared_files"
 
