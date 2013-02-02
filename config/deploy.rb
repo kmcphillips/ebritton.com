@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 
 set :application, "ebritton.com"
-set :repository,  "git://github.com/kimos/ebritton.com.git"
+set :repository,  "git://github.com/kmcphillips/ebritton.com.git"
 set :deploy_to, "/var/www/kevin/data/www/ebritton.com"
 set :user, "kevin"
 set :use_sudo, false
