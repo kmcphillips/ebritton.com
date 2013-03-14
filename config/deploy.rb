@@ -1,8 +1,9 @@
 require "bundler/capistrano"
+require "rvm/capistrano"
 
 set :application, "ebritton.com"
 set :repository,  "git://github.com/kmcphillips/ebritton.com.git"
-set :deploy_to, "/var/www/kevin/data/www/ebritton.com"
+set :deploy_to, "/home/kevin/ebritton.com"
 set :user, "kevin"
 set :use_sudo, false
 set :scm, "git"
@@ -10,9 +11,9 @@ set :keep_releases, 5
 
 default_run_options[:pty] = true
 
-role :web, "68.169.58.121"
-role :app, "68.169.58.121"
-role :db,  "68.169.58.121", :primary => true
+role :web, "198.211.110.159"
+role :app, "198.211.110.159"
+role :db,  "198.211.110.159", :primary => true
 
 
 namespace :deploy do
