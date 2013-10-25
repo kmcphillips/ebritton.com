@@ -8,7 +8,7 @@ describe ApplicationHelper do
     let(:post){ FactoryGirl.create(:post) }
 
     it "should run the body through the markdown parser if it is not imported" do
-      md = mock :markdown
+      md = double :markdown
 
       RDiscount.should_receive(:new).with(post.body).and_return(md)
       md.should_receive(:to_html).and_return(post.body)
