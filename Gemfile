@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.16'
 
 gem 'mysql2'
 
@@ -10,28 +10,24 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'pry'
   gem 'pry-rails'
-  gem 'awesome_print'
-  gem 'rspec'
   gem 'rspec-rails'
   gem 'guard'
   gem 'guard-rspec'
   gem 'spork'
   gem 'guard-spork'
-  gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'quiet_assets'
   gem 'thin'
 end
 
 group :darwin do
-  gem "growl"
+  gem 'growl'
 end
 
 group :linux do
-  gem "rb-inotify"
-  gem "libnotify"
+  gem 'rb-inotify'
+  gem 'libnotify'
 end
 
 gem 'jquery-rails'
