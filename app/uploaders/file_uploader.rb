@@ -5,7 +5,7 @@ class FileUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::IsolatedHelper
 
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{model.id}"
+    "uploads/#{model.class.base_class.to_s.underscore}/#{model.id}"
   end
 
 end
