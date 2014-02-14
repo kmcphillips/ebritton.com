@@ -6,7 +6,6 @@ gem 'mysql2'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'therubyracer', :platform => :ruby
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -42,7 +41,7 @@ gem 'capistrano-ext'
 gem 'rvm-capistrano'
 gem 'haml'
 gem 'haml-rails'
-gem 'rmagick'
+gem 'rmagick', '2.13.2'
 
 # Active Admin back end
 gem 'activeadmin'
