@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   validates :body, :presence => true
 
   scope :sorted, ->{ order("created_at DESC") }
-  scope :created_on, ->{|date| where("DATE(created_at) BETWEEN ? AND ?", date, date).sorted }
+  scope :created_on, ->(date) { where("DATE(created_at) BETWEEN ? AND ?", date, date).sorted }
   scope :recent, ->{ sorted.limit(5) }
 
   def sort_by
