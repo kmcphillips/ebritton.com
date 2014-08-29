@@ -10,7 +10,7 @@ describe Link do
 
     it "should know if the url is invalid" do
       link.url = "pie"
-      link.should have(1).error_on(:url)
+      link.should_not be_valid
     end
   end
 end
