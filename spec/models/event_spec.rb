@@ -5,10 +5,10 @@ describe Event do
 
   describe "#sort_by" do
     it "should map to starts_at" do
-      event.should_receive(:starts_at).and_return("pie")    
-      event.sort_by.should == "pie"
-    end    
-  end  
+      expect(event).to receive(:starts_at).and_return("pie")
+      expect(event.sort_by).to eq("pie")
+    end
+  end
 
   describe "protected method" do
     describe "#set_ends_at" do
@@ -17,11 +17,12 @@ describe Event do
         event.starts_at = t
         event.days = 3
         event.save!
-        event.ends_at.should == (t + 3.days)
+
+        expect(event.ends_at).to eq(t + 3.days)
       end
 
       it "should not raise if there is data missing" do
-        lambda{ Event.new.send(:set_ends_at) }.should_not raise_error
+        expect(lambda{ Event.new.send(:set_ends_at) }).to_not raise_error
       end
     end
   end

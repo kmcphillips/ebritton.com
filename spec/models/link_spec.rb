@@ -5,12 +5,12 @@ describe Link do
 
   describe "validation" do
     it "should know if the url is valid" do
-      link.should be_valid
+      expect(link).to be_valid
     end
 
     it "should know if the url is invalid" do
       link.url = "pie"
-      link.should_not be_valid
+      expect(link).to_not be_valid
     end
   end
 end

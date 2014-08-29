@@ -6,7 +6,7 @@ describe AdminHelper do
 
   describe "#imported_message" do
     it "should be a string" do
-      imported_message.should be_a(String)
+      expect(imported_message).to be_a(String)
     end
   end
 end
