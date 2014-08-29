@@ -132,4 +132,6 @@ ActiveAdmin.setup do |config|
 
   config.register_stylesheet 'admin/admin.css'
 
+
+  config.root_to = 'posts#index'
 end
