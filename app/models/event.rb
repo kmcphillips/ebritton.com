@@ -1,6 +1,4 @@
 class Event < ActiveRecord::Base
-  attr_accessible :title, :body, :starts_at, :days, :image
-
   acts_as_permalink
 
   mount_uploader :image, ImageUploader
@@ -13,7 +11,7 @@ class Event < ActiveRecord::Base
   before_validation :set_ends_at
 
   scope :upcoming, lambda{ where("ends_at > ?", Time.now).order("starts_at DESC") }
-  scope :past, lambda{ where("ends_at < ?", Time.now).order("starts_at DESC") }  
+  scope :past, lambda{ where("ends_at < ?", Time.now).order("starts_at DESC") }
 
   def sort_by
     starts_at

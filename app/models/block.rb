@@ -1,6 +1,4 @@
 class Block < ActiveRecord::Base
-  attr_accessible :image, :body
-
   mount_uploader :image, ImageUploader
 
   validates :label, :presence => true

@@ -1,6 +1,4 @@
 class Project < ActiveRecord::Base
-  attr_accessible :title, :body, :happened_at, :written, :file_title
-
   acts_as_permalink
 
   validates :title, :presence => true
@@ -10,11 +8,10 @@ class Project < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
   mount_uploader :file, FileUploader
-  
+
   scope :sorted, order("created_at DESC")
   scope :written, where(:written => true)
   scope :other, where(:written => false)
-
 
   protected
 
