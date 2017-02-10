@@ -1,0 +1,20 @@
+/*============================================================================
+  Borders
+==============================================================================*/
+
+$borders-data: (
+);
+
+/*============================================================================
+  Returns the default border.
+  @return {List} The border value.
+==============================================================================*/
+@function border($variant: base) {
+  $fetched-value: map-get($borders-data, $variant);
+
+  @if $fetched-value {
+    @return $fetched-value;
+  } @else {
+    @error "Border variant `#{$variant}` not found. Available variants: #{available-names($borders-data)}";
+  }
+}

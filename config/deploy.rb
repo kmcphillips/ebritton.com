@@ -1,39 +1,28 @@
-require "bundler/capistrano"
-require "rvm/capistrano"
+# config valid only for current version of Capistrano
+lock '3.6.1'
 
-set :application, "ebritton.com"
-set :repository,  "git://github.com/kmcphillips/ebritton.com.git"
-set :deploy_to, "/home/kevin/ebritton.com"
-set :user, "kevin"
-set :use_sudo, false
-set :scm, "git"
+set :application, 'ebritton.com'
+set :repo_url, 'https://github.com/kmcphillips/ebritton.com.git'
+
+set :user, "deploy"
+set :rbenv_ruby, "2.3.1"
+
+# Default value for :linked_files is []
+# append :linked_files, 'config/database.yml', 'config/secrets.yml'
+
+# Default value for linked_dirs is []
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets'
+
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
 set :keep_releases, 5
 
-default_run_options[:pty] = true
-
-role :web, "198.211.110.159"
-role :app, "198.211.110.159"
-role :db,  "198.211.110.159", :primary => true
-
-
-namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-end
-
-after "deploy:update", "deploy:cleanup"
-
-after "deploy:finalize_update", "symlink_shared_files"
-
-task :symlink_shared_files do
-  run "ln -s #{shared_path}/uploads #{release_path}/public/uploads"
-  run "ln -s #{shared_path}/legacy_images #{release_path}/public/images"
-
-  %w{database.yml}.each do |config|
-    run "ln -s #{shared_path}/#{config} #{release_path}/config/#{config}"
-  end
-end
-
+# Unicorn
+# set :unicorn_pid, -> { File.join(current_path, "tmp", "pids", "unicorn.pid") }
+set :unicorn_config_path, -> { File.join(current_path, "config", "unicorn.rb") }
+# set :unicorn_roles, -> { :app }
+# set :unicorn_options, -> { "" }
+# set :unicorn_rack_env, -> { fetch(:rails_env) == "development" ? "development" : "deployment" }
+# set :unicorn_restart_sleep_time, 3

@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+html,
+body {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%, #645353 100%);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
