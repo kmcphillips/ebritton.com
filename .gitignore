@@ -1,11 +1,5 @@
 /.bundle
-/db/*.sql
-/config/database.yml
 /log/*.log
 /tmp
 .DS_Store
 .sass-cache
-.rvmrc
-public/uploads
-public/images
-public/blog/images
