@@ -25,20 +25,19 @@
   <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheet.css">
 </head>
+
 <body>
-
-<h1>
-    Hello,
-    <br>
-    <br>
-    I am <a href="http://ebritton.com" class="site">Eliot Britton</a>.
-    <br>
-    Composer based in Toronto Ontario.
-    <br>
-    <br>
-    <a href="mailto:eliot@ebritton.com">Email me</a>.
-</h1>
-<a href="https://twitter.com/eliotbritton" class="tweet">@eliotbritton</a>
-
+  <h1>
+      Hello,
+      <br>
+      <br>
+      I am <a href="http://ebritton.com" class="site">Eliot Britton</a>.
+      <br>
+      Composer based in Toronto Ontario.
+      <br>
+      <br>
+      <%= obfuscated_email(text: "Email me") %>.
+  </h1>
+  <a href="https://twitter.com/eliotbritton" class="tweet">@eliotbritton</a>
 </body>
 </html>
