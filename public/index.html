@@ -23,7 +23,8 @@
   <meta property="og:site_name" content="Eliot Britton" />
 
   <link href="https://fonts.googleapis.com/css?family=Cabin:400,400i" rel="stylesheet">
-  <link rel="stylesheet" href="/stylesheet.css">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
@@ -36,7 +37,7 @@
       and <a href="https://docs.google.com/document/d/1kXGAOxdHMjw3RqvWc8A5t5ynlC3PyqCdmhaVZZThTeI/edit?usp=sharing">Bio</a>.
       <br>
       <br>
-      <%= obfuscated_email(text: "Email me") %>!
+      <script>document.write('<a href="mailto:' + ["ebritton.com","eliot"].reverse().join('@') + '" class="">Email me</a>');</script>
   </h1>
   <a href="https://twitter.com/eliotbritton" class="tweet">@eliotbritton</a>
 </body>
