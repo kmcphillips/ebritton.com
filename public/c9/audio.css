@@ -1,5 +1,5 @@
 body {
-	background: url('overlay.png'), linear-gradient(45deg, #ffc97d 0%, #ff5ca6 100%)
+	background: url('/c9/overlay.png'), linear-gradient(45deg, #ffc97d 0%, #ff5ca6 100%)
 }
 .tile {
 	width: calc(42% - 20px);
@@ -34,7 +34,7 @@ body {
 	text-align: center;
 	font-family: 'ITC Garamond Std Ultra Condensed', serif;
 	font-style: italic;
-	-webkit-user-select: none; /* Safari */        
+	-webkit-user-select: none; /* Safari */
 -moz-user-select: none; /* Firefox */
 -ms-user-select: none; /* IE10+/Edge */
 user-select: none; /* Standard */
