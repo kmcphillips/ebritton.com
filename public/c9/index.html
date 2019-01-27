@@ -1,14 +1,14 @@
 <html>
-	<head>
-		<title>c9</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="/c9/font/stylesheet.css?v5" />
-		<link rel="stylesheet" href="/c9/audio.css?v5" />
-	</head>
-	<body ontouchstart="">
-		<script>
-			Audio.prototype.stop = function() {
+  <head>
+    <title>c9</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/c9/font/stylesheet.css?v5" />
+    <link rel="stylesheet" href="/c9/audio.css?v5" />
+  </head>
+  <body ontouchstart="">
+    <script>
+      Audio.prototype.stop = function() {
     this.pause();
     this.currentTime = 0;
     document.addEventListener("touchstart", function() {},false);
@@ -16,107 +16,108 @@
 
 
 function randPlay(category) {
-	var rId;
-	var rand = Math.random();
-	if (rand >= 0.75) {
-		rId=4;
-	}
-	else if (rand < 0.75 && rand >= 0.5) {
-		rId=3;
-	}
-	else if (rand < 0.5 && rand >= 0.25) {
-		rId=2;
-	}
-	else {
-		rId=1;
-	}
-	document.getElementById(category + rId).play()
+  var rId;
+  var rand = Math.random();
+  if (rand >= 0.75) {
+    rId=4;
+  }
+  else if (rand < 0.75 && rand >= 0.5) {
+    rId=3;
+  }
+  else if (rand < 0.5 && rand >= 0.25) {
+    rId=2;
+  }
+  else {
+    rId=1;
+  }
+  document.getElementById(category + rId).play()
 };
 
 function stopAll() {
-	var sound = document.getElementsByTagName('audio');
+  var sound = document.getElementsByTagName('audio');
   for(i=0; i<sound.length; i++) sound[i].pause();
 };
 </script>
-		<audio id="begin1">
-		   <source src="/c9/Audience Start 1.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="begin2">
-		   <source src="/c9/Audience Start 2.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="begin3">
-		   <source src="/c9/Audience Start 3.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="begin4">
-		   <source src="/c9/Audience Start 4.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="mid1">
-		   <source src="/c9/Audience Middle 1.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="mid2">
-		   <source src="/c9/Audience Middle 2.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="mid3">
-		   <source src="/c9/Audience Middle 3.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="mid4">
-		   <source src="/c9/Audience Middle 4.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="end1">
-		   <source src="/c9/Audience End 1-cut.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="end2">
-		   <source src="/c9/Audience End 2-cut.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="end3">
-		   <source src="/c9/Audience End 3.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="end4">
-		   <source src="/c9/Audience End 4.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="perf1">
-		   <source src="/c9/Performers Chip 1.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="perf2">
-		   <source src="/c9/Performers Chip 2.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="perf3">
-		   <source src="/c9/Performers Chip 3.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<audio id="perf4">
-		   <source src="/c9/Performers Chip 1.mp3" type="audio/mpeg">
-		Your browser does not support the audio element.
-		</audio>
-		<div class='tile' ontouchstart="" onclick="stopAll(), randPlay('begin')">
-			<p>Beginning</p>
-		</div>
-		<div class='tile' ontouchstart="" onclick="stopAll(), randPlay('mid')">
-			<p>Middle</p>
-		</div>
-		<div class='tile' ontouchstart="" onclick="stopAll(), randPlay('end')">
-			<p>End</p>
-		</div>
-		<div class='tile perf' ontouchstart="" onclick="stopAll(), randPlay('perf')">
-			<p>Performers Only</p>
-		</div>
-		<div class='tile stop' ontouchstart="" onclick="stopAll()">
-			<p>Emergency Stop!</p>
-		</div>
+    <audio id="begin1">
+       <souhttps://kev-cool.ams3.cdn.digitaloceanspaces.com/src="/c9/Audience Start 1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="begin2">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience Start 2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="begin3">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience Start 3.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="begin4">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience Start 4.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="mid1">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience Middle 1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="mid2">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience Middle 2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="mid3">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience Middle 3.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="mid4">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience Middle 4.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="end1">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience End 1-cut.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="end2">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience End 2-cut.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="end3">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience End 3.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="end4">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Audience End 4.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="perf1">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Performers Chip 1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="perf2">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Performers Chip 2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="perf3">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Performers Chip 3.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <audio id="perf4">
+       <source src="https://kev-cool.ams3.cdn.digitaloceanspaces.com/Performers Chip 1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <div class='tile' ontouchstart="" onclick="stopAll(), randPlay('begin')">
+      <p>Beginning</p>
+    </div>
+    <div class='tile' ontouchstart="" onclick="stopAll(), randPlay('mid')">
+      <p>Middle</p>
+    </div>
+    <div class='tile' ontouchstart="" onclick="stopAll(), randPlay('end')">
+      <p>End</p>
+    </div>
+    <div class='tile perf' ontouchstart="" onclick="stopAll(), randPlay('perf')">
+      <p>Performers Only</p>
+    </div>
+    <div class='tile stop' ontouchstart="" onclick="stopAll()">
+      <p>Emergency Stop!</p>
+    </div>
 
-	</body>
+  </body>
 </html>
+
